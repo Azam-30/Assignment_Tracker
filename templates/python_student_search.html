@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Search Python Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Search Python Student</h1>
+        <a href="{% url 'logout' %}" class="btn btn-dark mb-4 float-end">Logout</a>
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="search_term" class="form-label">Search Term:</label>
+                <input type="text" class="form-control" name="search_term" id="search_term" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-rounded btn-lg">Search</button>
+        </form>
+
+        {% if no_records_found %}
+        <div class="alert alert-danger">
+            <strong>No records found</strong>
+        </div>
+        <a href="{% url 'python_student_list' %}" class="btn btn-secondary">Back to Student List</a>
+        {% endif %}
+
+        {% if search_results %}
+        <h2 class="mb-4">Search Results for <span class="bg-info text-white">"{{ search_term }}"</span></h2>
+        <h3 class="mb-4">Number of Assignments Submitted: <span class="bg-warning">{{ total_assignments_submitted }}</span></h3>
+        
+        <table class="table table-bordered border-dark table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th>Roll No</th>
+                    <th>Assignment 1</th>
+                    <th>Assignment 2</th>
+                    <th>Assignment 3</th>
+                    <th>Assignment 4</th>
+                    <th>Assignment 5</th>
+                    <th>Assignment 6</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in search_results %}
+                <tr>
+                    <td>{{ result.roll_no }}</td>
+                    <td>{{ result.assignment1 }}</td>
+                    <td>{{ result.assignment2 }}</td>
+                    <td>{{ result.assignment3 }}</td>
+                    <td>{{ result.assignment4 }}</td>
+                    <td>{{ result.assignment5 }}</td>
+                    <td>{{ result.assignment6 }}</td>
+                    <td>
+                        <a class="btn btn-primary" style="margin-bottom: 7px" href="{% url 'python_student_update' result.roll_no %}" role="button">
+                            <i class="fa-solid fa-user-pen" style="margin-right: 5px"></i>Edit
+                        </a>
+                        <a class="btn btn-danger" href="{% url 'python_student_delete' result.roll_no %}" role="button" onclick="return confirm('Are you sure you want to delete this student?')">
+                            <i class="fa-solid fa-trash" style="margin-right: 5px"></i>Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'python_student_list' %}" class="btn btn-secondary">Back to Student List</a>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+</body>
+</html>

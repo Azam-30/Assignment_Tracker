@@ -1,0 +1,74 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'login1.css' %}" />
+    <!--<link rel="shortcut icon" href="nbkr logo.png" type="image/x-icon">-->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha384-mzrmE5lZf5r5z5tnzxFN5Pp5Rq8meM1a7xj2q5F5F5Q6Jw5qq5w5w5w5w5w5w5w5w5w5"
+    crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-mzrmE5lZf5r5z5tnzxFN5Pp5Rq8meM1a7xj2q5F5F5Q6Jw5qq5w5w5w5w5w5w5w5w5" crossorigin="anonymous">
+    
+
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo">N.B.K.R INSTITUTE OF SCIENCE AND TECHNOLOGY</h2> 
+        <div class="nav-links">
+            <a href="{% url "index" %}" class="home-button"><button>Home</button></a>
+        </div>
+    </header>
+     
+    
+    <div class="wrapper">
+         
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action={% url "validate_login" %} method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text"  id="username" name="username" id="username"  required >
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password"  id="password"name="password" id="password"  required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="remember-forget">
+                    <a class="show-password" id="showpassword">
+                        Show Password
+                        <!--<i class="fas fa-eye-slash eye-icon"></i> -->
+                    </a>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <!--<div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link">Register!</a></p>
+                </div>-->
+            </form>
+            <br>
+            <div   class="error-message">
+                {% if error_message %}
+                    <p>{{ error_message }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'login.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+
+

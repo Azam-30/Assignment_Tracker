@@ -1,0 +1,184 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+header {
+    background-color: #4CAF50;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    position: relative; /* Added for absolute positioning of logout button */
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced box shadow */
+    border-radius: 8px;
+    padding: 30px; /* Expanded padding */
+    max-width: 500px; /* Expanded max-width */
+    width: 100%;
+    margin-top: 50px;
+}
+
+.subject-selection {
+    text-align: center;
+}
+
+.subject-selection a {
+    text-decoration: none;
+}
+
+.subject-selection button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px; /* Expanded padding */
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subject-selection button:hover {
+    background-color: #45a049;
+}
+
+/* Logout Button Styles */
+.logout-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #343a40; /* Darker color for contrast */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #495057; /* Slightly lighter on hover */
+}
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+header {
+    background-color: #4CAF50;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    position: relative; /* Added for absolute positioning of logout button */
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced box shadow */
+    border-radius: 8px;
+    padding: 30px; /* Expanded padding */
+    max-width: 500px; /* Expanded max-width */
+    width: 100%;
+    margin-top: 50px;
+}
+
+.subject-selection {
+    text-align: center;
+}
+
+.subject-selection a {
+    text-decoration: none;
+}
+
+.subject-selection button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px; /* Expanded padding */
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subject-selection button:hover {
+    background-color: #45a049;
+}
+
+/* Logout Button Styles */
+.logout-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #343a40; /* Darker color for contrast */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #495057; /* Slightly lighter on hover */
+}
