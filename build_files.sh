@@ -1,8 +1,7 @@
 #!/bin/bash
-set -e
-
 echo "Installing dependencies..."
-pip3 install -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
 
-echo "Running collectstatic..."
-python3 manage.py collectstatic --noinput
+echo "Collecting static files..."
+python3.9 manage.py collectstatic --noinput
