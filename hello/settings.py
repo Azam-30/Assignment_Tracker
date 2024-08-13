@@ -32,14 +32,14 @@ ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost','assignment-tra
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'home',
-    'whitenoise.runserver_nostatic', 
+    'home', 
 ]
 
 MIDDLEWARE = [
@@ -132,7 +132,7 @@ USE_TZ = True
 
 
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
