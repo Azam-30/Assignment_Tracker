@@ -12,9 +12,44 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     return render(request, 'index.html')
 
+# def load_data(request):
+#     if request.method == 'POST':
+#         roll_no = request.POST.get('roll_no')
+
+#         python_data = list(Student.objects.filter(roll_no=roll_no).values())
+#         data_structures_data = list(DataStructuresStudent.objects.filter(roll_no=roll_no).values())
+
+#         def count_yes(assignments):
+#             return sum(1 for assignment in assignments if assignment == 'yes')
+
+#         python_counts = []
+#         for data in python_data:
+#             assignments = [data[f'assignment{i}'] for i in range(1, 7)]
+#             python_counts.append(count_yes(assignments))
+
+#         data_structures_counts = []
+#         for data in data_structures_data:
+#             assignments = [data[f'assignment{i}'] for i in range(1, 7)]
+#             data_structures_counts.append(count_yes(assignments))
+
+#         # Combine the counts into single values (assuming only one roll_no at a time)
+#         python_count = python_counts[0] if python_counts else 0
+#         data_structures_count = data_structures_counts[0] if data_structures_counts else 0
+
+#         return JsonResponse({
+#             'python_data': python_data,
+#             'data_structures_data': data_structures_data,
+#             'python_count': python_count,
+#             'data_structures_count': data_structures_count,
+#         })
+
+#     return JsonResponse({'error': 'Invalid request'}, status=400)
+
 def load_data(request):
     if request.method == 'POST':
         roll_no = request.POST.get('roll_no')
+        if not roll_no:
+            return JsonResponse({'error': 'Roll number is required'}, status=400)
 
         python_data = list(Student.objects.filter(roll_no=roll_no).values())
         data_structures_data = list(DataStructuresStudent.objects.filter(roll_no=roll_no).values())
@@ -22,19 +57,8 @@ def load_data(request):
         def count_yes(assignments):
             return sum(1 for assignment in assignments if assignment == 'yes')
 
-        python_counts = []
-        for data in python_data:
-            assignments = [data[f'assignment{i}'] for i in range(1, 7)]
-            python_counts.append(count_yes(assignments))
-
-        data_structures_counts = []
-        for data in data_structures_data:
-            assignments = [data[f'assignment{i}'] for i in range(1, 7)]
-            data_structures_counts.append(count_yes(assignments))
-
-        # Combine the counts into single values (assuming only one roll_no at a time)
-        python_count = python_counts[0] if python_counts else 0
-        data_structures_count = data_structures_counts[0] if data_structures_counts else 0
+        python_count = count_yes([data[f'assignment{i}'] for data in python_data for i in range(1, 7)]) if python_data else 0
+        data_structures_count = count_yes([data[f'assignment{i}'] for data in data_structures_data for i in range(1, 7)]) if data_structures_data else 0
 
         return JsonResponse({
             'python_data': python_data,
@@ -44,22 +68,6 @@ def load_data(request):
         })
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
-
-"""def load_data(request):
-    if request.method == 'POST':
-        roll_no = request.POST.get('roll_no')
-
-        python_data = list(Student.objects.filter(roll_no=roll_no).values())
-        data_structures_data = list(DataStructuresStudent.objects.filter(roll_no=roll_no).values())
-
-        print('Python Data:', python_data)  # Debugging
-        print('Data Structures Data:', data_structures_data)  # Debugging
-
-        return JsonResponse({
-            'python_data': python_data,
-            'data_structures_data': data_structures_data
-        })
-    return JsonResponse({'error': 'Invalid request'}, status=400)"""
 
 def login_view(request):
     return render(request, 'login.html')
